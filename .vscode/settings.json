@@ -1,0 +1,60 @@
+{
+  "peacock.remoteColor": "#54d697",
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.lineNumbers": "on",
+    "editor.rulers": [
+      80
+    ],
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "eslint.packageManager": "yarn",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "npm.packageManager": "yarn",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "[graphql]": {
+      "editor.formatOnSave": true
+    },
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[javascriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.formatOnSave": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#7de0b0",
+      "activityBar.background": "#7de0b0",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#a165da",
+      "activityBarBadge.foreground": "#15202b",
+      "commandCenter.border": "#15202b99",
+      "sash.hoverBorder": "#7de0b0",
+      "statusBar.background": "#54d697",
+      "statusBar.foreground": "#15202b",
+      "statusBarItem.hoverBackground": "#30c77e",
+      "statusBarItem.remoteBackground": "#54d697",
+      "statusBarItem.remoteForeground": "#15202b",
+      "titleBar.activeBackground": "#54d697",
+      "titleBar.activeForeground": "#15202b",
+      "titleBar.inactiveBackground": "#54d69799",
+      "titleBar.inactiveForeground": "#15202b99"
+    },
+}
