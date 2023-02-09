@@ -26,21 +26,24 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
 
 
 ## 追加
+フロント側は`vite`（`rollup`）で、GAS側は`es-build`でそれぞれ別個にビルドする。フロントは`vite-plugin-singlefile`、GASは`esbuild-gas-plugin`でシングルファイルにまとめている。
+
+フロントからGAS側で定義した関数を呼ぶために`gas-client`を使って外に出している。
+
+
 - clasp, @types/google-apps-script
 - gas-client
 - vite-plugin-singlefile
+- esbuild, esbuild-gas-plugiin
 
 追加したツールに伴ってコード中の相対リンクや各種設定ファイルを変更している。
 
-## 構成
-Google Apps Script側のコードは`server`に、JS側はいつもどおり`src`で自由にどうぞ
-
 ## usage
-
-`clasp`のログインと（SpreadSheet）プロジェクトの作成をしたあとは`appscript.json`を`server`以下に設置する。
 
 ```
 yarn build
 yarn push
 yarn open
 ```
+
+*本当は`appsscript.json`はignore listに入れたほうがいい
