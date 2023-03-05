@@ -7,8 +7,6 @@
     "dev": "vite",
     "build": "tsc && vite build && node build.cjs",
     "push": "cp appsscript.json dist && clasp push && rm -rf dist/*",
-    "pull": "clasp pull",
-    "open": "clasp open",
     "preview": "vite preview",
     "lint:es": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:es:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",

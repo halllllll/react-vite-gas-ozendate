@@ -40,10 +40,18 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
 
 ## usage
 
+preview with `HMR`
 ```
+yarn vite --port=xxxx
+```
+
+prepare and deploy
+```
+clasp login
+clasp create --type sheets
 yarn build
 yarn push
-yarn open
+clasp open
 ```
 
 *本当は`appsscript.json`はignore listに入れたほうがいい

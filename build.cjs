@@ -4,7 +4,7 @@ const { GasPlugin } = require('esbuild-gas-plugin');
 
 require('esbuild')
   .build({
-    entryPoints: ['server/main.ts'],
+    entryPoints: ['src/server/main.ts'],
 
     bundle: true,
 
