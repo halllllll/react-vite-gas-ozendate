@@ -20,6 +20,10 @@
     "prepare": "npx simple-git-hooks || :"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.12.16",
     "gas-client": "^1.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -31,7 +35,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "clasp": "^1.0.0",
     "esbuild": "^0.17.6",
     "esbuild-gas-plugin": "^0.5.0",
