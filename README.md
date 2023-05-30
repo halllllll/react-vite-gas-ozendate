@@ -11,6 +11,8 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
   - `.eslintignore`
   - `.eslintrc.json`
 - Jest
+  - `¯\_(ツ)_/¯`
+  - `_(:3」∠)_`
 - Node
   - `package.json`
 - Prettier
