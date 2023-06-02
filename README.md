@@ -34,9 +34,9 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
 
 
 - clasp, @types/google-apps-script
-- gas-client
-- vite-plugin-singlefile
-- esbuild, esbuild-gas-plugiin
+- [enuchi/gas-client](https://github.com/enuchi/gas-client)
+- [richardtallent/vite-plugin-singlefile](https://github.com/richardtallent/vite-plugin-singlefile)
+- [mahaker/esbuild-gas-plugiin](https://github.com/mahaker/esbuild-gas-plugin)
 
 追加したツールに伴ってコード中の相対リンクや各種設定ファイルを変更している。
 
