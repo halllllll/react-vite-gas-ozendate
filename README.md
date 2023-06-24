@@ -30,7 +30,7 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
 ## 追加
 フロント側は`vite`（`rollup`）で、GAS側は`es-build`でそれぞれ別個にビルドする。フロントは`vite-plugin-singlefile`、GASは`esbuild-gas-plugin`でシングルファイルにまとめている。
 
-フロントからGAS側で定義した関数を呼ぶために`gas-client`を使って外に出している。
+フロントからGAS側で定義した関数を呼ぶために`gas-client`を使って外に出している。また、フロント側の型定義ファイルで`Google`を定義し、`"gas-client/src/utils/is-gas-environment"`でローカルかGAS環境かを判定している
 
 
 - clasp, @types/google-apps-script
