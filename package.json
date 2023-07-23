@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node build.cjs",
+    "build": "tsc && vite build & npm run build:menu && node build.cjs",
     "push": "cp appsscript.json dist && clasp push && rm -rf dist/*",
+    "build:menu???????": "tsc && vite build --emptyOutDir --config vite.config.menu.ts && mv dist_menu/server/Menu/menu.html dist/ && rm -rf dist_menu",
+    "build:menu": "tsc && vite build --emptyOutDir --config vite.config.menu.ts && find dist_menu -type f -name '*.html' -exec mv {} dist/ \\; && rm -rf dist_menu",
     "preview": "vite preview",
     "lint:es": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:es:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",

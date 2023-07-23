@@ -1,5 +1,5 @@
 import { ss } from './Const';
-import openDialog from './Menu/Menu';
+import { openDialog, customMenu1 } from './Menu/Menu';
 
 export const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
   return HtmlService.createHtmlOutputFromFile('index.html')
@@ -10,6 +10,7 @@ export const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
 const onOpen = (): void => {
   const menu = SpreadsheetApp.getUi().createMenu('Custom menu');
   menu.addItem('ダイアログ表示', 'openDialog_');
+  menu.addItem('custom menu from html', 'customMenu1_');
   menu.addToUi();
 };
 
@@ -27,6 +28,7 @@ const getSpreadSheetName = (): string | null => {
 global.doGet = doGet;
 global.onOpen = onOpen;
 global.openDialog_ = openDialog;
+global.customMenu1_ = customMenu1;
 global.affectCountToA1 = affectCountToA1; // フロント側から呼ばれる関数もグローバルから叩けるようにしておく
 global.getSpreadSheetName = getSpreadSheetName; // 同上
 
