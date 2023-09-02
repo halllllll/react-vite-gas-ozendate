@@ -20,8 +20,12 @@ const affectCountToA1 = (count: number): void => {
   range.setValue(count);
 };
 
-const getSpreadSheetName = (): string | null => {
+const getSpreadSheetName = (): string => {
   return ss.getActiveSheet().getName();
+};
+
+const getSpreadSheetUrl = (): string => {
+  return ss.getUrl();
 };
 
 // Exposed to GAS global function
@@ -31,6 +35,7 @@ global.openDialog_ = openDialog;
 global.customMenu1_ = customMenu1;
 global.affectCountToA1 = affectCountToA1; // フロント側から呼ばれる関数もグローバルから叩けるようにしておく
 global.getSpreadSheetName = getSpreadSheetName; // 同上
+global.getSpreadSheetUrl = getSpreadSheetUrl;
 
 // Exposed to Frontend API
-export { affectCountToA1, getSpreadSheetName };
+export { affectCountToA1, getSpreadSheetName, getSpreadSheetUrl };

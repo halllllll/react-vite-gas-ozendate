@@ -3,6 +3,7 @@ import { GASClient } from 'gas-client';
 import { isGASEnvironment } from 'gas-client/src/utils/is-gas-environment';
 import type * as server from '../server/main';
 import './App.css';
+import { SheetNameAPI, SheetUrlAPI } from './stubs/getSheetInfo';
 
 const { serverFunctions } = new GASClient<typeof server>();
 
@@ -15,11 +16,16 @@ const App: FC = () => {
   };
 
   const [title, setTitle] = useState<string | null>('');
+  const [sheetUrl, setSheetUrl] = useState<string>('');
   useEffect(() => {
     const getTitle = async () => {
-      const spreadsheettitle = await serverFunctions.getSpreadSheetName();
+      const [spreadsheettitle, spreadsheeturl] = await Promise.all([
+        SheetNameAPI(),
+        SheetUrlAPI(),
+      ]);
       console.log(`get spread sheet title: ${spreadsheettitle ?? '(null)'}`);
       setTitle(spreadsheettitle);
+      setSheetUrl(spreadsheeturl);
     };
     void getTitle();
   }, []);
@@ -49,7 +55,15 @@ const App: FC = () => {
         </div>
       </div>
       {isGASEnvironment() ? (
-        <div>here is PROD env</div>
+        <>
+          <div>here is PROD env</div>
+          <div>
+            Go to Sheet:{' '}
+            <a href={sheetUrl} target="_blank">
+              LINK
+            </a>
+          </div>
+        </>
       ) : (
         <div>here is DEV env</div>
       )}
