@@ -6,31 +6,24 @@ SpeadSheetのGoogle Apps ScriptコンテナバインドスクリプトでWebア�
 
 from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) base menu
 
+## background knowledges,　libraries, tools or envs
 - Devcontainer
+- node
+- pnpm
 - ESLint
-  - `.eslintignore`
-  - `.eslintrc.json`
-- Jest
-  - `¯\_(ツ)_/¯`
-  - `_(:3」∠)_`
-- Node
-  - `package.json`
 - Prettier
-  - `.prettierrc.json`
 - React
+- react-router
 - StyleLint
 - TypeScript
-  - `tsconfig.ts`
 - Vite
-- yarn.lock
-- ほか、VSCodeの拡張機能
-  - `.vscode`以下
-
-
-## 追加
+- Storybook6
+- clasp
+  - [https://codelabs.developers.google.com/codelabs/clasp/#0](https://codelabs.developers.google.com/codelabs/clasp/#0)
+## more
 フロント側は`vite`（`rollup`）で、GAS側は`es-build`でそれぞれ別個にビルドする。フロントは`vite-plugin-singlefile`、GASは`esbuild-gas-plugin`でシングルファイルにまとめている。
 
-フロントからGAS側で定義した関数を呼ぶために`gas-client`を使って外に出している。また、フロント側の型定義ファイルで`Google`を定義し、`"gas-client/src/utils/is-gas-environment"`でローカルかGAS環境かを判定している
+フロントからGAS側で定義した関数を呼ぶために`gas-client`を使って外に出している。また、フロント側の型定義ファイルで`Google`を定義し、`gas-client/src/utils/is-gas-environment`でローカルかGAS環境かを判定している
 
 
 - clasp, @types/google-apps-script
@@ -40,20 +33,22 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
 
 追加したツールに伴ってコード中の相対リンクや各種設定ファイルを変更している。
 
+Webアプリ側(`vite.config.ts`)およびSpreadsheet側のカスタムメニュー用のhtml（`vite.config.menu.ts`）の両方をビルドする。
+
 ## usage
 
 preview with `HMR`
 ```
-yarn vite --port=xxxx
+pnpm run dev --port=xxxx
 ```
+この場合、メニューの画面は`localhost:xxxx/src/server/Menu/menu.html`で見れる
+
 
 prepare and deploy
 ```
 clasp login
 clasp create --type sheets
-yarn build
-yarn push
+pnpm build
+pnpm push
 clasp open
 ```
-
-*本当は`appsscript.json`はignore listに入れたほうがいい
