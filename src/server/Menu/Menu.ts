@@ -4,9 +4,7 @@ const openDialog = (): void => {
 };
 
 const customMenu1 = (): void => {
-  const html = HtmlService.createHtmlOutputFromFile('menu.html')
-    .setWidth(600)
-    .setHeight(600);
+  const html = HtmlService.createHtmlOutputFromFile('menu.html').setWidth(600).setHeight(600);
   SpreadsheetApp.getUi().showModalDialog(html, 'CUSTOM MENU 1');
 };
 export { openDialog, customMenu1 };

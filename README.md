@@ -9,15 +9,12 @@ from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) bas
 ## background knowledges,　libraries, tools or envs
 - Devcontainer
 - node
-- pnpm
-- ESLint
-- Prettier
+- Bun
+- Biome
 - React
 - react-router
-- StyleLint
 - TypeScript
 - Vite
-- Storybook6
 - clasp
   - [https://codelabs.developers.google.com/codelabs/clasp/#0](https://codelabs.developers.google.com/codelabs/clasp/#0)
 ## more
@@ -39,7 +36,7 @@ Webアプリ側(`vite.config.ts`)およびSpreadsheet側のカスタムメニュ
 
 preview with `HMR`
 ```
-pnpm run dev --port=xxxx
+bun dev --port=xxxx
 ```
 この場合、メニューの画面は`localhost:xxxx/src/server/Menu/menu.html`で見れる
 
@@ -48,7 +45,7 @@ prepare and deploy
 ```
 clasp login
 clasp create --type sheets
-pnpm build
-pnpm push
+bun run build
+bun run push
 clasp open
 ```

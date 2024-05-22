@@ -7,7 +7,8 @@ export const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
     .setTitle(getSpreadSheetName() ?? 'Vite + React on GAS');
 };
 
-const onOpen = (): void => {
+const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
+  console.log(e.user);
   const menu = SpreadsheetApp.getUi().createMenu('Custom menu');
   menu.addItem('ダイアログ表示', 'openDialog_');
   menu.addItem('custom menu from html', 'customMenu1_');

@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: ./.devcontainer/Dockerfile
+    working_dir: /workspace
+    tty: true
+    volumes:
+      - ..:/workspace:cached
+    restart: always
+    command: /bin/sh -c "while sleep 1000; do :; done"

@@ -19,10 +19,7 @@ const App: FC = () => {
   const [sheetUrl, setSheetUrl] = useState<string>('');
   useEffect(() => {
     const getTitle = async () => {
-      const [spreadsheettitle, spreadsheeturl] = await Promise.all([
-        SheetNameAPI(),
-        SheetUrlAPI(),
-      ]);
+      const [spreadsheettitle, spreadsheeturl] = await Promise.all([SheetNameAPI(), SheetUrlAPI()]);
       console.log(`get spread sheet title: ${spreadsheettitle ?? '(null)'}`);
       setTitle(spreadsheettitle);
       setSheetUrl(spreadsheeturl);
@@ -32,9 +29,7 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <a href="/src/server/Menu/menu.html">
-        （カスタムメニューのhtmlサンプル）
-      </a>
+      <a href="/src/server/Menu/menu.html">（カスタムメニューのhtmlサンプル）</a>
       <h1>{title !== '' ? title : 'Vite + React on GAS'}</h1>
       <div className="card">
         <button
@@ -59,7 +54,7 @@ const App: FC = () => {
           <div>here is PROD env</div>
           <div>
             Go to Sheet:{' '}
-            <a href={sheetUrl} target="_blank">
+            <a href={sheetUrl} target="_blank" rel="noreferrer">
               LINK
             </a>
           </div>

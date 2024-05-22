@@ -1,12 +1,59 @@
-import { type FC } from 'react';
+import { Suspense, type FC } from 'react';
+import { QueryErrorResetBoundary, useSuspenseQuery } from '@tanstack/react-query';
 import { ClimbingBoxLoader } from 'react-spinners';
+import ErrorRecovery from './ErrorFallback';
+
+const sleep = async (ms: number) => {
+  return await new Promise((resolve) => setTimeout(resolve, ms));
+};
+const myFetch = async () => {
+  await sleep(1000);
+  if (Math.random() < 0.7) {
+    console.error('エラーだよ');
+
+    throw new Error('omg');
+  }
+  console.log('gogo');
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const obj = await res.json();
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return JSON.stringify(obj);
+};
+
+const SuspendComponent: FC = () => {
+  const {
+    isError,
+    error,
+    data: result,
+  } = useSuspenseQuery({
+    queryKey: ['myfetch'],
+    queryFn: myFetch,
+    retry: 0,
+  });
+  if (isError) {
+    console.error('エラーあるじゃん！');
+    console.error(error);
+
+    throw error ?? new Error('omgomg');
+  }
+
+  return <div>{result}</div>;
+};
 
 const App: FC = () => {
   return (
     <>
       <h1>カスタムメニューによって読み込まれるメニュー</h1>
       <div>せっかくなのでデザインコンポーネントを使います</div>
-      <ClimbingBoxLoader color="#36d7b7" />
+      <QueryErrorResetBoundary>
+        <ErrorRecovery>
+          <Suspense fallback={<ClimbingBoxLoader color="#36b7d7" />}>
+            <SuspendComponent />
+          </Suspense>
+        </ErrorRecovery>
+      </QueryErrorResetBoundary>
     </>
   );
 };
