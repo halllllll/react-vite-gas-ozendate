@@ -10,6 +10,8 @@ require('esbuild')
 
     outfile: 'dist/main.js',
 
+    minify: true,
+
     logLevel: 'info',
 
     plugins: [GasPlugin],
