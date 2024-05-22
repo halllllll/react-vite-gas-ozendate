@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "format": "bunx @biomejs/biome format ./src --write",
-    "build": "tsc && bunx vite build & bun build:menu && node build.cjs",
+    "build": "tsc && bunx vite build & bun build:menu && bun build.js",
     "push": "cp appsscript.json dist && bunx @google/clasp push && rm -rf dist/*",
     "build:menu": "tsc && bunx vite build --emptyOutDir --config vite.config.menu.ts && find dist_menu -type f -name '*.html' -exec mv {} dist/ \\; && rm -rf dist_menu",
     "preview": "vite preview",
