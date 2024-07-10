@@ -43,3 +43,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.footer {
+  margin-top: '1rem';
+  margin-left: auto;
+  width: 100%;
+}

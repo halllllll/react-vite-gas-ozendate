@@ -15,7 +15,6 @@
         "donjayamanne.githistory",
         "MariusAlchimavicius.json-to-ts",
         "oderwat.indent-rainbow",
-        "stylelint.vscode-stylelint",
         "VisualStudioExptTeam.vscodeintellicode",
         "vscode-icons-team.vscode-icons",
         "wix.vscode-import-cost",
@@ -39,7 +38,7 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "yarn install",
+  "postCreateCommand": "bun add -g @google/clasp",
 
   // Configure tool-specific properties.
   // "customizations": {},

@@ -28,41 +28,48 @@ const App: FC = () => {
   }, []);
 
   return (
-    <div className="App">
-      <a href="/src/server/Menu/menu.html">（カスタムメニューのhtmlサンプル）</a>
-      <h1>{title !== '' ? title : 'Vite + React on GAS'}</h1>
-      <div className="card">
-        <button
-          onClick={() => {
-            setCount((count: number) => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
+    <>
+      <div className="App">
+        <a href="/src/server/Menu/menu.html">（カスタムメニューのhtmlサンプル）</a>
+        <h1>{title !== '' ? title : 'Vite + React on GAS'}</h1>
         <div className="card">
           <button
-            onClick={async () => {
-              await handleButtonClick();
+            type={'button'}
+            onClick={() => {
+              setCount((count: number) => count + 1);
             }}
           >
-            SpreadSheetにカウントを反映する
+            count is {count}
           </button>
-        </div>
-      </div>
-      {isGASEnvironment() ? (
-        <>
-          <div>here is PROD env</div>
-          <div>
-            Go to Sheet:{' '}
-            <a href={sheetUrl} target="_blank" rel="noreferrer">
-              LINK
-            </a>
+          <div className="card">
+            <button
+              type={'button'}
+              onClick={async () => {
+                await handleButtonClick();
+              }}
+            >
+              SpreadSheetにカウントを反映する
+            </button>
           </div>
-        </>
-      ) : (
-        <div>here is DEV env</div>
-      )}
-    </div>
+        </div>
+        {isGASEnvironment() ? (
+          <>
+            <div>here is PROD env</div>
+            <div>
+              Go to Sheet:{' '}
+              <a href={sheetUrl} target="_blank" rel="noreferrer">
+                LINK
+              </a>
+            </div>
+          </>
+        ) : (
+          <div>here is DEV env</div>
+        )}
+      </div>
+      <footer className="fotter">
+        <p>v2024-07-11</p>
+      </footer>
+    </>
   );
 };
 

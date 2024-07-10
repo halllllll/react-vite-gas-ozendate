@@ -41,11 +41,14 @@ bun dev --port=xxxx
 この場合、メニューの画面は`localhost:xxxx/src/server/Menu/menu.html`で見れる
 
 
+
 prepare and deploy
+* `The 'punycode' module is deprecated`と出るが、直し方がわからない
+
 ```
-clasp login
-clasp create --type sheets
+bux clasp login
+bunx clasp create --type sheets
 bun run build
 bun run push
-clasp open
+bunx clasp open
 ```
