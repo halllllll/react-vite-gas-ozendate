@@ -6,17 +6,6 @@ SpeadSheetのGoogle Apps ScriptコンテナバインドスクリプトでWebア�
 
 from [react-vite-ozendate](https://github.com/halllllll/react-vite-ozendate) base menu
 
-## background knowledges,　libraries, tools or envs
-- Devcontainer
-- node
-- Bun
-- Biome
-- React
-- react-router
-- TypeScript
-- Vite
-- clasp
-  - [https://codelabs.developers.google.com/codelabs/clasp/#0](https://codelabs.developers.google.com/codelabs/clasp/#0)
 ## more
 フロント側は`vite`（`rollup`）で、GAS側は`es-build`でそれぞれ別個にビルドする。フロントは`vite-plugin-singlefile`、GASは`esbuild-gas-plugin`でシングルファイルにまとめている。
 
@@ -45,10 +34,23 @@ bun dev --port=xxxx
 prepare and deploy
 * `The 'punycode' module is deprecated`と出るが、直し方がわからない
 
+`clasp create`で生成された`.clasp.json`の`rootDir`を`"/workspace/dist"`に変更する必要がある。
+
+```.clasp.json
+{
+  "scriptId": "xxxx",
+  "rootDir": "/workspace/dist",
+  "parentId": [
+    "xxxx"
+  ]
+}
 ```
-bux clasp login
-bunx clasp create --type sheets
+
+script memo
+```
+clasp login
+clasp create --type sheets
 bun run build
 bun run push
-bunx clasp open
+clasp open
 ```
