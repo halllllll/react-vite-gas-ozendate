@@ -11,39 +11,40 @@
     "build:menu": "tsc && bunx vite build --emptyOutDir --config vite.config.menu.ts && find dist_menu -type f -name '*.html' -exec mv {} dist/ \\; && rm -rf dist_menu",
     "preview": "vite preview",
     "preinstall": "npx only-allow bun; npx typesync || :",
-    "prepare": "npx simple-git-hooks || :"
+    "prepare": "npx simple-git-hooks || :",
+    "update": "bunx ncu -u"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@tanstack/react-query": "^5.37.1",
-    "framer-motion": "^11.2.5",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@tanstack/react-query": "^5.52.0",
+    "framer-motion": "^11.3.28",
     "gas-client": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
-    "react-spinners": "^0.13.8",
-    "rollup": "^4.17.2",
-    "stylelint-config-recommended": "^14.0.0"
+    "react-spinners": "^0.14.1",
+    "rollup": "^4.21.0",
+    "stylelint-config-recommended": "^14.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@types/google-apps-script": "^1.0.83",
     "@types/lint-staged": "^13.3.0",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "esbuild": "^0.21.3",
+    "@vitejs/plugin-react": "^4.3.1",
+    "esbuild": "^0.23.1",
     "esbuild-gas-plugin": "^0.8.0",
     "jest": "^29.7.0",
-    "lint-staged": "^15.2.4",
-    "npm-check-updates": "^16.14.20",
+    "lint-staged": "^15.2.9",
+    "npm-check-updates": "^17.0.6",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "5.4.5",
-    "vite": "^5.2.11",
-    "vite-plugin-singlefile": "^2.0.1",
-    "vite-tsconfig-paths": "^4.3.2"
+    "typescript": "5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-singlefile": "^2.0.2",
+    "vite-tsconfig-paths": "^5.0.1"
   },
   "simple-git-hooks": {
     "pre-commit": ". ./lint-staged-each.sh"
