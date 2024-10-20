@@ -1,5 +1,5 @@
-import { GasPlugin } from 'esbuild-gas-plugin';
 import esbuild from 'esbuild';
+import { GasPlugin } from 'esbuild-gas-plugin';
 
 esbuild
   .build({
@@ -7,6 +7,7 @@ esbuild
     bundle: true,
     outfile: 'dist/main.js',
     minify: true,
+    format: 'esm',
     logLevel: 'info',
     plugins: [GasPlugin],
   })

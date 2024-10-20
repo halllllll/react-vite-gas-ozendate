@@ -1,5 +1,5 @@
 import { ss } from './Const';
-import { openDialog, customMenu1 } from './Menu/Menu';
+import { customMenu1, openDialog } from './Menu/Menu';
 
 export const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
   return HtmlService.createHtmlOutputFromFile('index.html')

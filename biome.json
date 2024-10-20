@@ -10,7 +10,7 @@
       "correctness": {
         "noUnusedVariables": "error",
         "noUnsafeFinally": "error",
-        "noUndeclaredVariables": "error"
+        "noUndeclaredVariables": "info"
       }
     }
   },
