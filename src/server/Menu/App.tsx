@@ -1,35 +1,11 @@
-import { Suspense, type FC } from 'react';
-import { QueryErrorResetBoundary, useSuspenseQuery } from '@tanstack/react-query';
+import { QueryErrorResetBoundary } from '@tanstack/react-query';
+import { type Dispatch, type FC, type SetStateAction, Suspense, useState } from 'react';
 import { ClimbingBoxLoader } from 'react-spinners';
 import ErrorRecovery from './ErrorFallback';
+import { MyFetch } from './func';
 
-const sleep = async (ms: number) => {
-  return await new Promise((resolve) => setTimeout(resolve, ms));
-};
-const myFetch = async () => {
-  await sleep(1000);
-  if (Math.random() < 0.7) {
-    console.error('エラーだよ');
-
-    throw new Error('omg');
-  }
-  console.log('gogo');
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-  const obj = await res.json();
-
-  return JSON.stringify(obj);
-};
-
-const SuspendComponent: FC = () => {
-  const {
-    isError,
-    error,
-    data: result,
-  } = useSuspenseQuery({
-    queryKey: ['myfetch'],
-    queryFn: myFetch,
-    retry: 0,
-  });
+const SuspendComponent: FC<{ val: number; setVal: Dispatch<SetStateAction<number>> }> = (props) => {
+  const { isError, error, data: result } = MyFetch(props.val);
   if (isError) {
     console.error('エラーあるじゃん！');
     console.error(error);
@@ -37,21 +13,50 @@ const SuspendComponent: FC = () => {
     throw error ?? new Error('omgomg');
   }
 
-  return <div>{result}</div>;
+  return (
+    <div>
+      <div>result: {result}</div>
+      <button
+        type="button"
+        onClick={() => {
+          props.setVal(Math.floor(Math.random() * 200) + 1);
+        }}
+      >
+        reget
+      </button>
+    </div>
+  );
 };
 
 const App: FC = () => {
+  const [val, setVal] = useState<number>(Math.floor(Math.random() * 200) + 1);
+
   return (
     <>
       <h1>カスタムメニューによって読み込まれるメニュー</h1>
-      <div>せっかくなのでデザインコンポーネントを使います</div>
       <QueryErrorResetBoundary>
         <ErrorRecovery>
-          <Suspense fallback={<ClimbingBoxLoader color="#36b7d7" />}>
-            <SuspendComponent />
+          <Suspense
+            fallback={
+              <>
+                <div>せっかくなのでデザインコンポーネントを使います</div>
+                <div>
+                  <ClimbingBoxLoader color="#36b7d7" />
+                </div>
+              </>
+            }
+          >
+            <SuspendComponent val={val} setVal={setVal} />
           </Suspense>
         </ErrorRecovery>
       </QueryErrorResetBoundary>
+      <p>
+        ※{' '}
+        <a href="https://jsonplaceholder.typicode.com/todos">
+          https://jsonplaceholder.typicode.com/todos/
+        </a>
+        からランダムに1~200取得を取得しています
+      </p>
     </>
   );
 };

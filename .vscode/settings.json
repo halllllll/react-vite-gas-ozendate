@@ -6,7 +6,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.ts": "explicit",
       "source.organizeImports": "explicit",
-      "source.removeUnused.ts": "explicit"
+      "source.removeUnused.ts": "never"
     },
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": false,

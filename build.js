@@ -7,7 +7,7 @@ esbuild
     bundle: true,
     outfile: 'dist/main.js',
     minify: true,
-    format: 'esm',
+    // format: 'esm', export文が生成されてしまうのでやめとく
     logLevel: 'info',
     plugins: [GasPlugin],
   })
