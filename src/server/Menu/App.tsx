@@ -14,11 +14,9 @@ const myFetch = async () => {
     throw new Error('omg');
   }
   console.log('gogo');
-  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
   const obj = await res.json();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return JSON.stringify(obj);
 };
 

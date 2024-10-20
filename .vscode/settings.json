@@ -4,10 +4,11 @@
     "less.validate": false,
     "scss.validate": false,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-      "source.fixAll.stylelint": "explicit"
+      "source.fixAll.ts": "explicit",
+      "source.organizeImports": "explicit",
+      "source.removeUnused.ts": "explicit"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": false,
     "editor.lineNumbers": "on",
     "editor.rulers": [
@@ -15,7 +16,6 @@
     ],
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
-    "eslint.packageManager": "yarn",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "npm.packageManager": "yarn",
