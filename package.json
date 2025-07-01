@@ -15,13 +15,15 @@
     "update": "bunx ncu -u"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
     "@tanstack/react-query": "^5.81.5",
     "gas-client": "^1.2.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-error-boundary": "^6.0.0",
     "rollup": "^4.44.1",
-    "stylelint-config-recommended": "^16.0.0"
+    "stylelint-config-recommended": "^16.0.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",

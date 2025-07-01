@@ -1,14 +1,15 @@
-import { type FC, useState, useEffect } from 'react';
 import { GASClient } from 'gas-client';
 import { isGASEnvironment } from 'gas-client/src/utils/is-gas-environment';
+import { type FC, useEffect, useState } from 'react';
 import type * as server from '../server/main';
-import './App.css';
+
 import { SheetNameAPI, SheetUrlAPI } from './stubs/getSheetInfo';
 
 const { serverFunctions } = new GASClient<typeof server>();
 
 const App: FC = () => {
   const [count, setCount] = useState(0);
+
   // communicate to spreadsheet
   const handleButtonClick = async () => {
     console.log(`affect value ${count} to SpreadSheet A1 cell!`);
@@ -29,11 +30,16 @@ const App: FC = () => {
 
   return (
     <>
-      <div className="App">
-        <a href="/src/server/Menu/menu.html">（カスタムメニューのhtmlサンプル）</a>
-        <h1>{title !== '' ? title : 'Vite + React on GAS'}</h1>
-        <div className="card">
+      <div className="w-screen h-screen flex flex-col items-center justify-center bg-neutral-800 text-white gap-10">
+        <a href="/src/server/Menu/menu.html" className="text-blue-500 hover:underline">
+          （カスタムメニューのhtmlサンプル）
+        </a>
+        <h1 className={'text-5xl text-center font-bold'}>{title ?? 'THIS IS PSEUDO TITLE'}</h1>
+        <div className="flex flex-col items-center justify-center space-y-6 mt-8">
           <button
+            className={
+              'bg-gray-700 hover:bg-gray-600 active:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-colors duration-150'
+            }
             type={'button'}
             onClick={() => {
               setCount((count: number) => count + 1);
@@ -41,16 +47,17 @@ const App: FC = () => {
           >
             count is {count}
           </button>
-          <div className="card">
-            <button
-              type={'button'}
-              onClick={async () => {
-                await handleButtonClick();
-              }}
-            >
-              SpreadSheetにカウントを反映する
-            </button>
-          </div>
+          <button
+            className={
+              'bg-gray-700 hover:bg-gray-600 active:bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors duration-150'
+            }
+            type={'button'}
+            onClick={async () => {
+              await handleButtonClick();
+            }}
+          >
+            SpreadSheetにカウントを反映する
+          </button>
         </div>
         {isGASEnvironment() ? (
           <>
@@ -66,7 +73,7 @@ const App: FC = () => {
           <div>here is DEV env</div>
         )}
       </div>
-      <footer className="fotter">
+      <footer className="absolute bottom-0 left-0 w-full text-center text-white py-2">
         <p>v2024-07-11</p>
       </footer>
     </>
