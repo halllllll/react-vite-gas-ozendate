@@ -16,7 +16,7 @@ const App: FC = () => {
     await serverFunctions.affectCountToA1(count);
   };
 
-  const [title, setTitle] = useState<string | null>('');
+  const [title, setTitle] = useState<string>('loading...');
   const [sheetUrl, setSheetUrl] = useState<string>('');
   useEffect(() => {
     const getTitle = async () => {
