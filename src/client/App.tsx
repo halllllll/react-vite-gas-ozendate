@@ -38,7 +38,7 @@ const App: FC = () => {
         <div className="flex flex-col items-center justify-center space-y-6 mt-8">
           <button
             className={
-              'bg-gray-700 hover:bg-gray-600 active:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-colors duration-150'
+              'bg-gray-700 border border-transparent hover:border-indigo-500 active:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-colors duration-150'
             }
             type={'button'}
             onClick={() => {
@@ -49,7 +49,7 @@ const App: FC = () => {
           </button>
           <button
             className={
-              'bg-gray-700 hover:bg-gray-600 active:bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors duration-150'
+              'bg-gray-700 border border-transparent hover:border-indigo-500 active:bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors duration-150'
             }
             type={'button'}
             onClick={async () => {
