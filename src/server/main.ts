@@ -29,7 +29,11 @@ const getSpreadSheetUrl = (): string => {
   return ss.getUrl();
 };
 
-// Exposed to GAS global function
+/**
+ * Exposed to GAS global function
+ * These functions are will listed as candidatable execution at AppsScript web editor menu.
+ * (besides with suffix underscore like `openDialog_`. they will be not exposed if added `_` on end of function name)
+ */
 global.doGet = doGet;
 global.onOpen = onOpen;
 global.openDialog_ = openDialog;
@@ -38,5 +42,8 @@ global.affectCountToA1 = affectCountToA1; // フロント側から呼ばれる�
 global.getSpreadSheetName = getSpreadSheetName; // 同上
 global.getSpreadSheetUrl = getSpreadSheetUrl;
 
-// Exposed to Frontend API
+/**
+ * Exposed to Frontend API, serverFunctions
+ * @see /src/client/serverFunctions.ts
+ */
 export { affectCountToA1, getSpreadSheetName, getSpreadSheetUrl };
