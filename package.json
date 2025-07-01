@@ -15,16 +15,11 @@
     "update": "bunx ncu -u"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.21.1",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@tanstack/react-query": "^5.81.5",
-    "framer-motion": "^12.20.2",
     "gas-client": "^1.2.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-error-boundary": "^6.0.0",
-    "react-spinners": "^0.17.0",
     "rollup": "^4.44.1",
     "stylelint-config-recommended": "^16.0.0"
   },
