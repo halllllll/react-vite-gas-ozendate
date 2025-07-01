@@ -9,6 +9,7 @@ esbuild
     minify: true,
     // format: 'esm', export文が生成されてしまうのでやめとく
     logLevel: 'info',
+    target: 'ES2021', // apps script環境はclass fieldに未対応なため
     plugins: [GasPlugin],
   })
   .catch((e) => {
