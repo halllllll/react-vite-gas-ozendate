@@ -1,3 +1,4 @@
+import type { AffectCountRequest } from '@/shared/types/sheet';
 import { container } from './di/container';
 import { customMenu1, openDialog } from './Menu/Menu';
 
@@ -21,7 +22,10 @@ const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
   menu.addToUi();
 };
 
-const affectCountToA1 = (count: number) => sheetDataRepository.affectCountToA1(count);
+const affectCountToA1 = (count: AffectCountRequest) => {
+  // convert request obj to DTO
+  return sheetDataRepository.affectCountToA1({ count });
+};
 const getSpreadSheetName = () => spreadsheetInfoService.getSpreadSheetName();
 const getSpreadSheetUrl = () => spreadsheetInfoService.getSpreadSheetUrl();
 
