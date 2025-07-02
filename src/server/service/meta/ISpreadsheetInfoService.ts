@@ -1,4 +1,6 @@
+import type { SheetNameResponse, SheetUrlResponse } from '@/shared/types/sheet';
+
 export interface ISpreadsheetInfoService {
-  getSpreadSheetName(): string;
-  getSpreadSheetUrl(): string;
+  getSpreadSheetName(): SheetNameResponse;
+  getSpreadSheetUrl(): SheetUrlResponse;
 }

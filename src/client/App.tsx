@@ -1,9 +1,8 @@
 import { GASClient } from 'gas-client';
 import { isGASEnvironment } from 'gas-client/src/utils/is-gas-environment';
-import { type FC, useEffect, useState } from 'react';
+import { type FC, useState } from 'react';
 import type * as server from '../server/main';
-
-import { SheetNameAPI, SheetUrlAPI } from './stubs/getSheetInfo';
+import { useGetSheetName, useGetSheetUrl } from './api/sheet/hook';
 
 const { serverFunctions } = new GASClient<typeof server>();
 
@@ -16,17 +15,21 @@ const App: FC = () => {
     await serverFunctions.affectCountToA1(count);
   };
 
-  const [title, setTitle] = useState<string>('loading...');
-  const [sheetUrl, setSheetUrl] = useState<string>('');
-  useEffect(() => {
-    const getTitle = async () => {
-      const [spreadsheettitle, spreadsheeturl] = await Promise.all([SheetNameAPI(), SheetUrlAPI()]);
-      console.log(`get spread sheet title: ${spreadsheettitle ?? '(null)'}`);
-      setTitle(spreadsheettitle);
-      setSheetUrl(spreadsheeturl);
-    };
-    void getTitle();
-  }, []);
+  // const [title, setTitle] = useState<string>('loading...');
+  // const [sheetUrl, setSheetUrl] = useState<string>('');
+  // useEffect(() => {
+  //   const getTitle = async () => {
+  //     const [spreadsheettitle, spreadsheeturl] = await Promise.all([SheetNameAPI(), SheetUrlAPI()]);
+  //     console.log(`get spread sheet title: ${spreadsheettitle ?? '(null)'}`);
+  //     setTitle(spreadsheettitle);
+  //     setSheetUrl(spreadsheeturl);
+  //   };
+  //   void getTitle();
+  // }, []);
+
+  const { data: title, error: nameError, isLoading: isNameLoading } = useGetSheetName();
+
+  const { data: sheetUrl, error: sheetUrlError, isLoading: isSheetUrlLoading } = useGetSheetUrl();
 
   return (
     <>
@@ -34,7 +37,13 @@ const App: FC = () => {
         <a href="/src/server/Menu/menu.html" className="text-blue-500 hover:underline">
           （カスタムメニューのhtmlサンプル）
         </a>
-        <h1 className={'text-5xl text-center font-bold'}>{title ?? 'THIS IS PSEUDO TITLE'}</h1>
+        <h1 className={'text-5xl text-center font-bold'}>
+          {!isNameLoading && title?.success && title?.data
+            ? title.data
+            : nameError
+              ? `${nameError.name} ${nameError.message}`
+              : 'Loading...'}
+        </h1>
         <div className="flex flex-col items-center justify-center space-y-6 mt-8">
           <button
             className={
@@ -64,9 +73,15 @@ const App: FC = () => {
             <div>here is PROD env</div>
             <div>
               Go to Sheet:{' '}
-              <a href={sheetUrl} target="_blank" rel="noreferrer">
-                LINK
-              </a>
+              {!isSheetUrlLoading && sheetUrl?.success && sheetUrl.data ? (
+                <a href={sheetUrl.data} target="_blank" rel="noreferrer">
+                  LINK
+                </a>
+              ) : sheetUrlError ? (
+                `${sheetUrlError.name} ${sheetUrlError.message}`
+              ) : (
+                'Loading...'
+              )}{' '}
             </div>
           </>
         ) : (

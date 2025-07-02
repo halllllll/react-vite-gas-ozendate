@@ -4,9 +4,13 @@ import { customMenu1, openDialog } from './Menu/Menu';
 const { sheetDataRepository, spreadsheetInfoService } = container;
 
 const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
+  const name = spreadsheetInfoService.getSpreadSheetName();
+  if (!name.success) {
+    throw new Error(name.name);
+  }
   return HtmlService.createHtmlOutputFromFile('index.html')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1')
-    .setTitle(spreadsheetInfoService.getSpreadSheetName() ?? 'Vite + React on GAS');
+    .setTitle(name.data ?? 'Vite + React on GAS');
 };
 
 const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
