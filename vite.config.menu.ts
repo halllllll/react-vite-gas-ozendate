@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { resolve } from 'path';
 
 const root = resolve(__dirname, 'src');
 const dist = resolve(__dirname, 'dist_menu');
