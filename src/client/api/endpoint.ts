@@ -1,7 +1,4 @@
-const API_ENDPOINT = {
-  SHEET_URL: '/mock/sheet_url',
-  SHEET_NAME: '/mock/sheet_name',
-};
+import { API_ENDPOINT } from './apiEndpoint';
 
 export type ApiEndpoint = keyof typeof API_ENDPOINT;
 

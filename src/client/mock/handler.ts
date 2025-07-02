@@ -1,10 +1,11 @@
+import type { API_ENDPOINT } from '@/client/api/apiEndpoint';
 import type { SheetNameResponse, SheetUrlResponse } from '@/shared/types/sheet';
 import { delay, http, HttpResponse } from 'msw';
 import { getApiPath } from '../api/endpoint';
 import { MOCK_SHEET_NAME, MOCK_SHEET_URL } from './data';
 
-export const handlers = [
-  http.get<never, never, SheetNameResponse>(getApiPath('SHEET_NAME'), async () => {
+const handlersRecord: Record<keyof typeof API_ENDPOINT, any> = {
+  SHEET_NAME: http.get<never, never, SheetNameResponse>(getApiPath('SHEET_NAME'), async () => {
     console.info('--- mock api: sheet name ---');
     await delay(400);
     return HttpResponse.json({
@@ -12,8 +13,7 @@ export const handlers = [
       data: MOCK_SHEET_NAME,
     });
   }),
-
-  http.get<never, never, SheetUrlResponse>(getApiPath('SHEET_URL'), async () => {
+  SHEET_URL: http.get<never, never, SheetUrlResponse>(getApiPath('SHEET_URL'), async () => {
     console.info('--- mock api: sheet url ---');
     await delay(100 * Math.random() * 300);
     return HttpResponse.json({
@@ -21,4 +21,6 @@ export const handlers = [
       data: MOCK_SHEET_URL,
     });
   }),
-];
+};
+
+export const handlers = Object.values(handlersRecord);
