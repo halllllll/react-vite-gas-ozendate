@@ -1,10 +1,12 @@
-import { ss } from './Const';
+import { container } from './di/container';
 import { customMenu1, openDialog } from './Menu/Menu';
 
-export const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
+const { sheetDataRepository, spreadsheetInfoService } = container;
+
+const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
   return HtmlService.createHtmlOutputFromFile('index.html')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1')
-    .setTitle(getSpreadSheetName() ?? 'Vite + React on GAS');
+    .setTitle(spreadsheetInfoService.getSpreadSheetName() ?? 'Vite + React on GAS');
 };
 
 const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
@@ -15,19 +17,9 @@ const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
   menu.addToUi();
 };
 
-const affectCountToA1 = (count: number): void => {
-  const sheet = ss.getActiveSheet();
-  const range = sheet.getRange('A1');
-  range.setValue(count);
-};
-
-const getSpreadSheetName = (): string => {
-  return ss.getActiveSheet().getName();
-};
-
-const getSpreadSheetUrl = (): string => {
-  return ss.getUrl();
-};
+const affectCountToA1 = (count: number) => sheetDataRepository.affectCountToA1(count);
+const getSpreadSheetName = () => spreadsheetInfoService.getSpreadSheetName();
+const getSpreadSheetUrl = () => spreadsheetInfoService.getSpreadSheetUrl();
 
 /**
  * Exposed to GAS global function
