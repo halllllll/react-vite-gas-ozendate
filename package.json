@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "format": "bunx @biomejs/biome format ./src --write",
-    "build": "tsc --extendedDiagnostics && bunx vite build & bun build:menu && bun build.js",
+    "build": "tsgo --extendedDiagnostics && bunx vite build & bun build:menu && bun build.js",
     "push": "cp appsscript.json dist && clasp push && rm -rf dist/*",
     "build:menu": "tsc && bunx vite build --emptyOutDir --config vite.config.menu.ts && find dist_menu -type f -name '*.html' -exec mv {} dist/ \\; && rm -rf dist_menu",
     "preview": "vite preview",
@@ -32,6 +32,7 @@
     "@types/lint-staged": "^13.3.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@typescript/native-preview": "^7.0.0-dev.20250701.1",
     "@vitejs/plugin-react": "^4.6.0",
     "esbuild": "^0.25.5",
     "esbuild-gas-plugin": "^0.9.0",
