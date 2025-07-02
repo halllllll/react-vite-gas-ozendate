@@ -1,6 +1,5 @@
 import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import { type Dispatch, type FC, type SetStateAction, Suspense, useState } from 'react';
-import { ClimbingBoxLoader } from 'react-spinners';
 import ErrorRecovery from './ErrorFallback';
 import { MyFetch } from './func';
 
@@ -38,12 +37,9 @@ const App: FC = () => {
         <ErrorRecovery>
           <Suspense
             fallback={
-              <>
-                <div>せっかくなのでデザインコンポーネントを使います</div>
-                <div>
-                  <ClimbingBoxLoader color="#36b7d7" />
-                </div>
-              </>
+              <div>
+                <div className="loader">loading...</div>
+              </div>
             }
           >
             <SuspendComponent val={val} setVal={setVal} />

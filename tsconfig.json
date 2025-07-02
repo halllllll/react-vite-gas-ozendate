@@ -24,6 +24,6 @@
     },
     "types": ["@types/google-apps-script"]
   },
-  "include": ["src", "src/server", "vite.config.*.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "src/server", "vite.config.*.ts", "build.ts"],
+  // "references": [{ "path": "./tsconfig.node.json" }]
 }

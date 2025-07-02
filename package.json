@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "format": "bunx @biomejs/biome format ./src --write",
-    "build": "tsgo --extendedDiagnostics && bunx vite build & bun build:menu && bun build.js",
+    "build": "tsgo --extendedDiagnostics && bun build.ts && find dist -type f -name '*.html' -exec mv {} dist/ \\;",
     "push": "cp appsscript.json dist && clasp push && rm -rf dist/*",
-    "build:menu": "tsc && bunx vite build --emptyOutDir --config vite.config.menu.ts && find dist_menu -type f -name '*.html' -exec mv {} dist/ \\; && rm -rf dist_menu",
     "preview": "vite preview",
     "preinstall": "npx only-allow bun; npx typesync || :",
     "prepare": "npx simple-git-hooks || :",
@@ -42,7 +41,7 @@
     "simple-git-hooks": "^2.13.0",
     "typescript": "5.8.3",
     "vite": "^7.0.0",
-    "vite-plugin-singlefile": "^2.2.0",
+    "vite-plugin-singlefile": "^2.3.0",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "simple-git-hooks": {
