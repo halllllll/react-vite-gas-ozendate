@@ -15,18 +15,6 @@ const App: FC = () => {
     await serverFunctions.affectCountToA1(count);
   };
 
-  // const [title, setTitle] = useState<string>('loading...');
-  // const [sheetUrl, setSheetUrl] = useState<string>('');
-  // useEffect(() => {
-  //   const getTitle = async () => {
-  //     const [spreadsheettitle, spreadsheeturl] = await Promise.all([SheetNameAPI(), SheetUrlAPI()]);
-  //     console.log(`get spread sheet title: ${spreadsheettitle ?? '(null)'}`);
-  //     setTitle(spreadsheettitle);
-  //     setSheetUrl(spreadsheeturl);
-  //   };
-  //   void getTitle();
-  // }, []);
-
   const { data: title, error: nameError, isLoading: isNameLoading } = useGetSheetName();
 
   const { data: sheetUrl, error: sheetUrlError, isLoading: isSheetUrlLoading } = useGetSheetUrl();

@@ -1,7 +1,3 @@
-export type SheetNameDTO = {
-  name: string;
-};
-
-export type SheetUrlDTO = {
-  url: string;
+export type AffectCountToA1DTO = {
+  count: number;
 };
