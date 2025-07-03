@@ -24,7 +24,7 @@ const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
 
 const affectCountToA1 = (count: AffectCountRequest) => {
   // convert request obj to DTO
-  return sheetOperationService.affectCountToA1(count);
+  return sheetOperationService.affectCountToA1({ count });
 };
 const getSpreadSheetName = () => spreadsheetInfoService.getSpreadSheetName();
 const getSpreadSheetUrl = () => spreadsheetInfoService.getSpreadSheetUrl();

@@ -1,14 +1,15 @@
 import type { ISheetDataRepository } from '@/server/repository/ISheetDataRepository';
-import type { AffectCountRequest, AffectCountResponse } from '@/shared/types/sheet';
+import type { AffectCountToA1DTO } from '@/shared/types/dto';
+import type { AffectCountResponse } from '@/shared/types/sheet';
 import type { ISheetOperationService } from './ISheetOperationService';
 
 export class SheetOperationService implements ISheetOperationService {
   constructor(private sheetDataRepository: ISheetDataRepository) {}
 
-  public affectCountToA1(count: AffectCountRequest): AffectCountResponse {
+  public affectCountToA1(count: AffectCountToA1DTO): AffectCountResponse {
     try {
       // dtoからの変換
-      this.sheetDataRepository.affectCountToA1({ count });
+      this.sheetDataRepository.affectCountToA1(count);
       return {
         success: true,
         data: null,
