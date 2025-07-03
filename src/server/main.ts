@@ -2,7 +2,7 @@ import type { AffectCountRequest } from '@/shared/types/sheet';
 import { container } from './di/container';
 import { customMenu1, openDialog } from './Menu/Menu';
 
-const { sheetDataRepository, spreadsheetInfoService } = container;
+const { sheetOperationService, spreadsheetInfoService } = container;
 
 const doGet = (): GoogleAppsScript.HTML.HtmlOutput => {
   const name = spreadsheetInfoService.getSpreadSheetName();
@@ -24,7 +24,7 @@ const onOpen = (e: GoogleAppsScript.Events.SheetsOnOpen): void => {
 
 const affectCountToA1 = (count: AffectCountRequest) => {
   // convert request obj to DTO
-  return sheetDataRepository.affectCountToA1({ count });
+  return sheetOperationService.affectCountToA1(count);
 };
 const getSpreadSheetName = () => spreadsheetInfoService.getSpreadSheetName();
 const getSpreadSheetUrl = () => spreadsheetInfoService.getSpreadSheetUrl();

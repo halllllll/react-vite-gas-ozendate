@@ -7,7 +7,6 @@ const spreadsheetInfoService = new SpreadsheetInfoService();
 const sheetOperationService = new SheetOperationService(sheetDataRepository);
 
 export const container = {
-  sheetDataRepository,
   spreadsheetInfoService,
   sheetOperationService,
 };
