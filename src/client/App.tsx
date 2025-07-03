@@ -78,7 +78,7 @@ const App: FC = () => {
         )}
       </div>
       <footer className="absolute bottom-0 left-0 w-full text-center text-white py-2">
-        <p>v2024-07-11</p>
+        <p>v2025-07-03</p>
       </footer>
     </>
   );
