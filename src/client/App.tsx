@@ -1,18 +1,21 @@
-import { GASClient } from 'gas-client';
 import { isGASEnvironment } from 'gas-client/src/utils/is-gas-environment';
 import { type FC, useState } from 'react';
-import type * as server from '../server/main';
-import { useGetSheetName, useGetSheetUrl } from './api/sheet/hook';
-
-const { serverFunctions } = new GASClient<typeof server>();
+import { useGetSheetName, useGetSheetUrl, usePostCount } from './api/sheet/hook';
 
 const App: FC = () => {
   const [count, setCount] = useState(0);
+  const { trigger: post, isMutating } = usePostCount();
 
   // communicate to spreadsheet
   const handleButtonClick = async () => {
     console.log(`affect value ${count} to SpreadSheet A1 cell!`);
-    await serverFunctions.affectCountToA1(count);
+    const ret = await post(count);
+    if (ret.success) {
+      console.log('Successfully updated the count in the spreadsheet.');
+    } else {
+      console.error(`Failed to update the count: ${ret.name} - ${ret.message}`);
+    }
+    // await serverFunctions.affectCountToA1(count);
   };
 
   const { data: title, error: nameError, isLoading: isNameLoading } = useGetSheetName();
@@ -45,15 +48,13 @@ const App: FC = () => {
             count is {count}
           </button>
           <button
-            className={
-              'bg-gray-700 border border-transparent hover:border-indigo-500 active:bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors duration-150'
-            }
+            className={`bg-gray-700 border border-transparent hover:border-indigo-500 active:bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors duration-150 ${isMutating ? 'opacity-50 cursor-not-allowed animation-spin' : ''}`}
             type={'button'}
-            onClick={async () => {
-              await handleButtonClick();
+            onClick={() => {
+              handleButtonClick();
             }}
           >
-            SpreadSheetにカウントを反映する
+            {isMutating ? 'sending...' : 'SpreadSheetにカウントを反映する'}
           </button>
         </div>
         {isGASEnvironment() ? (

@@ -1,4 +1,6 @@
+import type { AffectCountRequest } from '@/shared/types/sheet';
 import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
 import { SheetAPI } from './sheet';
 
 export const useGetSheetName = () => {
@@ -17,4 +19,13 @@ export const useGetSheetUrl = () => {
   });
 
   return { data, error, isLoading };
+};
+
+export const usePostCount = () => {
+  const { trigger, data, error, isMutating } = useSWRMutation(
+    'post-count',
+    async (_key: string, { arg }: { arg: AffectCountRequest }) => SheetAPI.postCount(arg),
+  );
+
+  return { trigger, data, error, isMutating };
 };

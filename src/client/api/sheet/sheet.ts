@@ -1,5 +1,9 @@
 import { isGASEnvironment, serverFunctions } from '@/client/serverFunctions';
-import type { SheetNameResponse, SheetUrlResponse } from '@/shared/types/sheet';
+import type {
+  AffectCountResponse,
+  SheetNameResponse,
+  SheetUrlResponse,
+} from '@/shared/types/sheet';
 import { getApiPath } from '../endpoint';
 
 export const SheetAPI = {
@@ -28,6 +32,26 @@ export const SheetAPI = {
      * @see src/client/mock/handler.ts
      */
     const response = await fetch(getApiPath('SHEET_URL'));
+    return await response.json();
+  },
+
+  postCount: async (count: number): Promise<AffectCountResponse> => {
+    console.log('[Sheet API] start posting count');
+    if (isGASEnvironment()) {
+      const ret = await serverFunctions.affectCountToA1(count);
+      return ret;
+    }
+    /**
+     * in dev env, intercepted by MSW
+     * @see src/client/mock/handler.ts
+     */
+    const response = await fetch(getApiPath('POST_COUNT'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify({ count: 1 }),
+    });
     return await response.json();
   },
 };
