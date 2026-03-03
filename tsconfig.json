@@ -18,11 +18,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "types": ["@types/google-apps-script"]
   },
   "include": ["src", "src/server", "vite.config.*.ts", "build.ts"],
+
 }
