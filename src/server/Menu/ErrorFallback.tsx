@@ -1,8 +1,7 @@
-import type { FC, PropsWithChildren } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-
-import { ErrorBoundary } from 'react-error-boundary';
+import type { FC, PropsWithChildren } from 'react';
 import type { FallbackProps } from 'react-error-boundary';
+import { ErrorBoundary } from 'react-error-boundary';
 
 const ErrorFallback: FC<FallbackProps> = ({ error, resetErrorBoundary }) => {
   const err = error as Error;
@@ -11,6 +10,7 @@ const ErrorFallback: FC<FallbackProps> = ({ error, resetErrorBoundary }) => {
     <div>
       <p>エラー発生: {err.message}</p>
       <button
+        type="button"
         onClick={() => {
           resetErrorBoundary();
         }}
