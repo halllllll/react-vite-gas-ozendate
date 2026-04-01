@@ -7,7 +7,6 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 console.log('---- build html singlefile ----');
 
@@ -21,7 +20,7 @@ for (const entry of entries) {
   // const componentName = path.basename(path.dirname(entry));
   await build({
     // root: path.resolve(__dirname, `./${componentName}`),
-    plugins: [react(), tsconfigPaths(), viteSingleFile(), tailwindcss()],
+    plugins: [react(), viteSingleFile(), tailwindcss()],
     build: {
       // dist上書き
       emptyOutDir: false,
